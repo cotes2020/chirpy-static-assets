@@ -8,10 +8,9 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 
 - If you want to use these assets only in local development:
 
-  Go to the root of your site and clone the assets as follows.
+  Go to the root of your site and clone the assets as follows:
 
   ```console
-  $ cd assets/lib
   $ git submodule init
   $ git submodule update
   ```
