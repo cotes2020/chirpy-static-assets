@@ -1,0 +1,23 @@
+{
+  "id": "2451185",
+  "name": "nihil's blog ex",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-nihil-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "27363226",
+      "name": "blog",
+      "font_class": "blog",
+      "unicode": "eafa",
+      "unicode_decimal": 60154
+    },
+    {
+      "icon_id": "16880989",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    }
+  ]
+}

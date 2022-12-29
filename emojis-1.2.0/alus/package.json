@@ -1,0 +1,23 @@
+{
+  "name": "alus",
+  "version": "1.1.1",
+  "description": "alus",
+  "main": "index.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiniValine/alus.git"
+  },
+  "keywords": [
+    "alus",
+    "MiniValine"
+  ],
+  "author": "MHuiG",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MiniValine/alus/issues"
+  },
+  "homepage": "https://github.com/MiniValine/alus#readme"
+}
