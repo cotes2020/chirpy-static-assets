@@ -48,29 +48,30 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 
 ## Versions
 
-| Dependency                                   |  Version |
-| :------------------------------------------- | -------: |
-| [Bootstrap][bootstrap]                       |  `5.3.1` |
-| [Clipboard][clipboard]                       | `2.0.11` |
-| [Day.js][dayjs]                              | `1.11.9` |
-| [Font Awesome Free][fontawesome]             |  `6.4.2` |
-| [jQuery][jquery]                             |  `3.7.1` |
-| [Lazysizes][lazysizes]                       |  `5.3.2` |
-| [Magnific Popup][magnific-popup]             |  `1.1.0` |
-| [Mermaid][mermaid]                           | `10.4.0` |
-| [Simple-Jekyll-Search][simple-jekyll-search] | `1.10.0` |
-| [Tocbot][tocbot]                             | `4.21.1` |
+| Dependency                                               |  Version |
+| :------------------------------------------------------- | -------: |
+| [Bootstrap][bootstrap]                                   |  `5.3.1` |
+| [Clipboard][clipboard]                                   | `2.0.11` |
+| [Day.js][dayjs]                                          | `1.11.9` |
+| [Font Awesome Free][fontawesome]                         |  `6.4.2` |
+| [jQuery][jquery]                                         |  `3.7.1` |
+| [Loading-attribute-polyfill][loading-attribute-polyfill] |  `2.1.1` |
+| [Magnific Popup][magnific-popup]                         |  `1.1.0` |
+| [Mermaid][mermaid]                                       | `10.4.0` |
+| [Simple-Jekyll-Search][simple-jekyll-search]             | `1.10.0` |
+| [Tocbot][tocbot]                                         | `4.21.1` |
 
 [assets]: https://github.com/cotes2020/chirpy-static-assets
 [chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy
 
 <!-- deps -->
+
 [bootstrap]: https://www.jsdelivr.com/package/npm/bootstrap
 [clipboard]: https://www.jsdelivr.com/package/npm/clipboard
 [dayjs]: https://www.jsdelivr.com/package/npm/dayjs
 [fontawesome]: https://fontawesome.com/download
 [jquery]: https://www.jsdelivr.com/package/npm/jquery
-[lazysizes]: https://www.jsdelivr.com/package/npm/lazysizes
+[loading-attribute-polyfill]: https://www.jsdelivr.com/package/npm/loading-attribute-polyfill
 [magnific-popup]: https://www.jsdelivr.com/package/npm/magnific-popup
 [mermaid]: https://www.jsdelivr.com/package/npm/mermaid
 [simple-jekyll-search]: https://www.jsdelivr.com/package/npm/simple-jekyll-search
