@@ -57,11 +57,10 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 | [jQuery][jquery]                                         |   `3.7.1` |
 | [Loading-attribute-polyfill][loading-attribute-polyfill] |   `2.1.1` |
 | [Magnific Popup][magnific-popup]                         |   `1.1.0` |
-| [Mermaid][mermaid]                                       |  `10.5.0` |
+| [Mermaid][mermaid]                                       |  `10.6.0` |
 | [Simple-Jekyll-Search][simple-jekyll-search]             |  `1.10.0` |
-| [Tocbot][tocbot]                                         |  `4.21.2` |
+| [Tocbot][tocbot]                                         |  `4.21.3` |
 
-[assets]: https://github.com/cotes2020/chirpy-static-assets
 [chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy
 
 <!-- deps -->

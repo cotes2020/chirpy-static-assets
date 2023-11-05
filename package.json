@@ -7,8 +7,8 @@
     "jquery": "^3.7.1",
     "lazysizes": "^5.3.2",
     "magnific-popup": "^1.1.0",
-    "mermaid": "^10.5.0",
+    "mermaid": "^10.6.0",
     "simple-jekyll-search": "^1.10.0",
-    "tocbot": "^4.21.2"
+    "tocbot": "^4.21.3"
   }
 }
