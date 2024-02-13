@@ -7,4 +7,4 @@ updates:
       npm:
         dependency-type: "production"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
