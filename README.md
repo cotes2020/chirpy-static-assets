@@ -50,7 +50,6 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 
 | Dependency                                               |   Version |
 | :------------------------------------------------------- | --------: |
-| [Bootstrap][bootstrap]                                   |   `5.3.2` |
 | [Clipboard][clipboard]                                   |  `2.0.11` |
 | [Day.js][dayjs]                                          | `1.11.10` |
 | [Font Awesome Free][fontawesome]                         |   `6.5.1` |
@@ -64,7 +63,6 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 
 <!-- deps -->
 
-[bootstrap]: https://www.jsdelivr.com/package/npm/bootstrap
 [clipboard]: https://www.jsdelivr.com/package/npm/clipboard
 [dayjs]: https://www.jsdelivr.com/package/npm/dayjs
 [fontawesome]: https://fontawesome.com/download
