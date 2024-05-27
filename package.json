@@ -5,8 +5,8 @@
     "dayjs": "^1.11.11",
     "glightbox": "^3.3.0",
     "lazysizes": "^5.3.2",
-    "mermaid": "^10.9.0",
+    "mermaid": "^10.9.1",
     "simple-jekyll-search": "^1.10.0",
-    "tocbot": "^4.27.20"
+    "tocbot": "^4.28.2"
   }
 }
