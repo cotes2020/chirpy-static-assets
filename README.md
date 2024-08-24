@@ -51,13 +51,13 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 | Dependency                                               |   Version |
 | :------------------------------------------------------- | --------: |
 | [Clipboard][clipboard]                                   |  `2.0.11` |
-| [Day.js][dayjs]                                          | `1.11.11` |
-| [Font Awesome Free][fontawesome]                         |   `6.5.2` |
+| [Day.js][dayjs]                                          | `1.11.13` |
+| [Font Awesome Free][fontawesome]                         |   `6.6.0` |
 | [GLightbox][glightbox]                                   |   `3.3.0` |
 | [Loading-attribute-polyfill][loading-attribute-polyfill] |   `2.1.1` |
-| [Mermaid][mermaid]                                       |  `10.9.0` |
+| [Mermaid][mermaid]                                       |  `11.0.2` |
 | [Simple-Jekyll-Search][simple-jekyll-search]             |  `1.10.0` |
-| [Tocbot][tocbot]                                         | `4.27.20` |
+| [Tocbot][tocbot]                                         | `4.29.20` |
 
 [chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy
 
