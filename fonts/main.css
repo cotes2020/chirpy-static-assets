@@ -1,1 +1,51 @@
-/*! Source Sans Pro */@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:400;font-display:swap;src:url(Source_Sans_Pro/SourceSansPro-Regular.ttf) format('truetype')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:600;font-display:swap;src:url(Source_Sans_Pro/SourceSansPro-SemiBold.ttf) format('truetype')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:700;font-display:swap;src:url(Source_Sans_Pro/SourceSansPro-Bold.ttf) format('truetype')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:900;font-display:swap;src:url(Source_Sans_Pro/SourceSansPro-Black.ttf) format('truetype')}/*! Lato */@font-face{font-family:Lato;font-style:normal;font-weight:400;font-display:swap;src:url(Lato/Lato-Regular.ttf) format('truetype')}
+/* Source Sans Pro */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('Source_Sans_Pro/SourceSansPro-Regular.woff2') format('woff2'),
+         url('Source_Sans_Pro/SourceSansPro-Regular.woff') format('woff'),
+         url('Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('Source_Sans_Pro/SourceSansPro-SemiBold.woff2') format('woff2'),
+         url('Source_Sans_Pro/SourceSansPro-SemiBold.woff') format('woff'),
+         url('Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('Source_Sans_Pro/SourceSansPro-Bold.woff2') format('woff2'),
+         url('Source_Sans_Pro/SourceSansPro-Bold.woff') format('woff'),
+         url('Source_Sans_Pro/SourceSansPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('Source_Sans_Pro/SourceSansPro-Black.woff2') format('woff2'),
+         url('Source_Sans_Pro/SourceSansPro-Black.woff') format('woff'),
+         url('Source_Sans_Pro/SourceSansPro-Black.ttf') format('truetype');
+}
+
+/* Lato */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('Lato/Lato-Regular.woff2') format('woff2'),
+         url('Lato/Lato-Regular.woff') format('woff'),
+         url('Lato/Lato-Regular.ttf') format('truetype');
+}
