@@ -2,6 +2,7 @@
 .*
 !.git*
 !.editorconfig
+!.prettierignore
 
 # NPM
 node_modules
