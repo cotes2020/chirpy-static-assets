@@ -7,6 +7,6 @@
     "lazysizes": "^5.3.2",
     "mermaid": "^11.6.0",
     "simple-jekyll-search": "^1.10.0",
-    "tocbot": "^4.36.3"
+    "tocbot": "^4.36.4"
   }
 }
