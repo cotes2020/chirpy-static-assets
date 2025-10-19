@@ -50,24 +50,24 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 
 | Dependency                                               |   Version |
 | :------------------------------------------------------- | --------: |
+| [Font Awesome Free][fontawesome]                         |   `7.1.0` |
 | [Clipboard][clipboard]                                   |  `2.0.11` |
-| [Day.js][dayjs]                                          | `1.11.13` |
-| [Font Awesome Free][fontawesome]                         |   `6.7.2` |
+| [Day.js][dayjs]                                          | `1.11.18` |
 | [GLightbox][glightbox]                                   |   `3.3.1` |
 | [Loading-attribute-polyfill][loading-attribute-polyfill] |   `2.1.1` |
-| [Mermaid][mermaid]                                       |  `11.6.0` |
+| [Mermaid][mermaid]                                       | `11.12.0` |
 | [Simple-Jekyll-Search][simple-jekyll-search]             |  `1.10.0` |
-| [Tocbot][tocbot]                                         |  `4.36.3` |
+| [Tocbot][tocbot]                                         |  `4.36.4` |
 
 [chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy
 
 <!-- deps -->
 
+[fontawesome]: https://fontawesome.com/download
 [clipboard]: https://www.jsdelivr.com/package/npm/clipboard
 [dayjs]: https://www.jsdelivr.com/package/npm/dayjs
-[fontawesome]: https://fontawesome.com/download
-[loading-attribute-polyfill]: https://www.jsdelivr.com/package/npm/loading-attribute-polyfill
 [glightbox]: https://www.jsdelivr.com/package/npm/glightbox
+[loading-attribute-polyfill]: https://www.jsdelivr.com/package/npm/loading-attribute-polyfill
 [mermaid]: https://www.jsdelivr.com/package/npm/mermaid
 [simple-jekyll-search]: https://www.jsdelivr.com/package/npm/simple-jekyll-search
 [tocbot]: https://www.jsdelivr.com/package/npm/tocbot
