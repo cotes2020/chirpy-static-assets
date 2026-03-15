@@ -50,12 +50,12 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
 
 | Dependency                                               |   Version |
 | :------------------------------------------------------- | --------: |
-| [Font Awesome Free][fontawesome]                         |   `7.1.0` |
+| [Font Awesome Free][fontawesome]                         |   `7.2.0` |
 | [Clipboard][clipboard]                                   |  `2.0.11` |
-| [Day.js][dayjs]                                          | `1.11.18` |
+| [Day.js][dayjs]                                          | `1.11.20` |
 | [GLightbox][glightbox]                                   |   `3.3.1` |
 | [Loading-attribute-polyfill][loading-attribute-polyfill] |   `2.1.1` |
-| [Mermaid][mermaid]                                       | `11.12.0` |
+| [Mermaid][mermaid]                                       | `11.13.0` |
 | [Simple-Jekyll-Search][simple-jekyll-search]             |  `1.10.0` |
 | [Tocbot][tocbot]                                         |  `4.36.4` |
 
