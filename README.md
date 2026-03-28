@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] based website to run. It provides the opportunity to choose self-host assets in production or development mode.
+Static assets (libraries/plugins/web-fonts) required to run [_Chirpy_][chirpy]-based websites. It allows you to self-host assets in either production or development mode.
 
 ## Usage
 
@@ -41,7 +41,7 @@ Static assets (libraries/plugins/web-fonts) required by the [_Chirpy_][chirpy] b
   ```diff
   steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v{X}
       with:
   +     submodules: true
   ```
