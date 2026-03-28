@@ -25,7 +25,6 @@ update_readme_version() {
   sed -i "/${keyword}/s/\`[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\`/\`${new_version}\`/" "$SCRIPT_DIR/README.md"
 }
 
-# ── dayjs ──────────────────────────────────────────────────────────────────────
 update_dayjs() {
   local version
   version=$(extract_version "dayjs")
@@ -56,7 +55,6 @@ update_dayjs() {
   done
 }
 
-# ── clipboard ─────────────────────────────────────────────────────────────────
 update_clipboard() {
   local version
   version=$(extract_version "clipboard")
@@ -77,7 +75,6 @@ update_clipboard() {
   echo "Updated: $dest"
 }
 
-# ── mermaid ───────────────────────────────────────────────────────────────────
 update_mermaid() {
   local version
   version=$(extract_version "mermaid")
@@ -98,7 +95,6 @@ update_mermaid() {
   echo "Updated: $dest"
 }
 
-# ── fontawesome-free ───────────────────────────────────────────────────────────
 update_fontawesome_free() {
   local version
   version=$(extract_version "@fortawesome/fontawesome-free")
@@ -145,7 +141,6 @@ update_fontawesome_free() {
   echo "Temporary files removed"
 }
 
-# ── glightbox ─────────────────────────────────────────────────────────────────
 update_glightbox() {
   local version
   version=$(extract_version "glightbox")
@@ -174,7 +169,6 @@ update_glightbox() {
   done
 }
 
-# ── tocbot ────────────────────────────────────────────────────────────────────
 update_tocbot() {
   local version
   version=$(extract_version "tocbot")
@@ -203,6 +197,79 @@ update_tocbot() {
   done
 }
 
+update_mathjax() {
+  local version
+  version=$(extract_version "mathjax")
+
+  if [[ -z "$version" ]]; then
+    echo "Error: could not read mathjax version from package.json" >&2
+    exit 1
+  fi
+
+  echo -e "\nUpdating mathjax to v${version}"
+
+  local src_dir="$SCRIPT_DIR/node_modules/mathjax"
+  local dest_dir="$SCRIPT_DIR/mathjax"
+
+  if [[ ! -d "$src_dir" ]]; then
+    echo "Error: $src_dir not found. Run 'npm install' first." >&2
+    exit 1
+  fi
+
+  echo "Clearing: $dest_dir"
+  rm -rf "$dest_dir"
+
+  echo "Copying: $src_dir -> $dest_dir"
+  cp -r "$src_dir" "$dest_dir"
+  echo "Updated: $dest_dir"
+
+  # Remove Node.js-specific files
+  local node_files=(
+    "node-main.js"
+    "node-main.mjs"
+    "node-main.cjs"
+    "node-main-setup.cjs"
+    "require.mjs"
+  )
+
+  for file in "${node_files[@]}"; do
+    rm -f "$dest_dir/$file"
+  done
+
+  # Remove documentation files
+  rm -f "$dest_dir/CONTRIBUTING.md" "$dest_dir/README.md" "$dest_dir/package.json"
+
+  echo "Removed Node.js-specific and documentation files"
+}
+
+update_loading_attribute_polyfill() {
+  local version
+  version=$(extract_version "loading-attribute-polyfill")
+
+  if [[ -z "$version" ]]; then
+    echo "Error: could not read loading-attribute-polyfill version from package.json" >&2
+    exit 1
+  fi
+
+  echo -e "\nUpdating loading-attribute-polyfill to v${version}"
+
+  local base_url="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@${version}/dist"
+  local base_dir="$SCRIPT_DIR/loading-attribute-polyfill"
+  local files=(
+    "loading-attribute-polyfill.min.css"
+    "loading-attribute-polyfill.umd.min.js"
+  )
+
+  for file in "${files[@]}"; do
+    local url="${base_url}/${file}"
+    local dest="${base_dir}/${file}"
+    mkdir -p "$(dirname "$dest")"
+    echo "Downloading: $url"
+    wget -q --show-progress -O "$dest" "$url"
+    echo "Updated: $dest"
+  done
+}
+
 run_if_updated() {
   local pkg="$1"
   local readme_key="$2"
@@ -218,95 +285,130 @@ run_if_updated() {
   fi
 }
 
-# ── main ───────────────────────────────────────────────────────────────────────
-while getopts "fh" opt; do
-  case $opt in
-  f) FULL=true ;;
-  h)
-    echo "Usage: $0 [-f] [-h]"
-    echo ""
-    echo "Update static assets in this repository based on versions defined in package.json."
-    echo "Each dependency is compared against the version recorded in README.md;"
-    echo "only changed dependencies are downloaded and updated."
-    echo ""
-    echo "Options:"
-    echo "  -f  Run a full update: download all dependencies regardless of the current README versions."
-    echo "  -h  Show this help message and exit."
-    exit 0
-    ;;
-  *)
-    echo "Usage: $0 [-f] [-h]" >&2
+main() {
+  local target=""
+
+  for arg in "$@"; do
+    case "$arg" in
+    -f) FULL=true ;;
+    -h)
+      echo "Usage: $0 [-f] [-h] [PACKAGE]"
+      echo ""
+      echo "Update static assets in this repository based on versions defined in package.json."
+      echo "Each dependency is compared against the version recorded in README.md;"
+      echo "only changed dependencies are downloaded and updated."
+      echo ""
+      echo "Arguments:"
+      echo "  PACKAGE  Only update the specified package (e.g., mathjax, dayjs, clipboard)."
+      echo ""
+      echo "Options:"
+      echo "  -f  Force update: download regardless of the current README versions."
+      echo "  -h  Show this help message and exit."
+      exit 0
+      ;;
+    -*)
+      echo "Usage: $0 [-f] [-h] [PACKAGE]" >&2
+      exit 1
+      ;;
+    *) target="$arg" ;;
+    esac
+  done
+
+  if ! command -v ncu &>/dev/null; then
+    echo "Error: npm-check-updates (ncu) is not installed." >&2
+    echo "Install it with: npm install -g npm-check-updates" >&2
     exit 1
-    ;;
-  esac
-done
-
-# ── check ncu ─────────────────────────────────────────────────────────────────
-if ! command -v ncu &>/dev/null; then
-  echo "Error: npm-check-updates (ncu) is not installed." >&2
-  echo "Install it with: npm install -g npm-check-updates" >&2
-  exit 1
-fi
-
-echo -e "\nRunning ncu -u to upgrade package.json..."
-ncu -u --packageFile "$PACKAGE_JSON"
-
-declare -A deps=(
-  ["dayjs"]="Day\.js"
-  ["clipboard"]="Clipboard"
-  ["mermaid"]="Mermaid"
-  ["@fortawesome/fontawesome-free"]="Font Awesome"
-  ["glightbox"]="GLightbox"
-  ["tocbot"]="Tocbot"
-)
-
-# Capture README versions before updating
-declare -A old_versions
-for pkg in "${!deps[@]}"; do
-  old_versions["$pkg"]=$(readme_version "${deps[$pkg]}")
-done
-
-for pkg in "${!deps[@]}"; do
-  readme_key="${deps[$pkg]}"
-  pkg_name="${pkg##*/}"
-  update_fn="update_${pkg_name//-/_}"
-  run_if_updated "$pkg" "$readme_key" "$update_fn"
-done
-
-# Build update summary
-declare -a changed_pkgs=()
-declare -a changed_old=()
-declare -a changed_new=()
-for pkg in "${!deps[@]}"; do
-  old_ver="${old_versions[$pkg]}"
-  new_ver=$(extract_version "$pkg")
-  if [[ "$old_ver" != "$new_ver" ]]; then
-    changed_pkgs+=("$pkg")
-    changed_old+=("$old_ver")
-    changed_new+=("$new_ver")
   fi
-done
 
-if [[ ${#changed_pkgs[@]} -gt 0 ]]; then
-  max_pkg_len=0
-  max_old_len=0
-  for i in "${!changed_pkgs[@]}"; do
-    [[ ${#changed_pkgs[$i]} -gt $max_pkg_len ]] && max_pkg_len=${#changed_pkgs[$i]}
-    [[ ${#changed_old[$i]} -gt $max_old_len ]] && max_old_len=${#changed_old[$i]}
+  declare -A deps=(
+    ["dayjs"]="Day\.js"
+    ["clipboard"]="Clipboard"
+    ["mermaid"]="Mermaid"
+    ["mathjax"]="MathJax"
+    ["@fortawesome/fontawesome-free"]="Font Awesome"
+    ["glightbox"]="GLightbox"
+    ["loading-attribute-polyfill"]="Loading-attribute-polyfill"
+    ["tocbot"]="Tocbot"
+  )
+
+  local -a target_pkgs=()
+
+  if [[ -n "$target" ]]; then
+    local matched=false
+    for pkg in "${!deps[@]}"; do
+      if [[ "${pkg##*/}" == "$target" ]]; then
+        target_pkgs+=("$pkg")
+        matched=true
+        break
+      fi
+    done
+
+    if [[ "$matched" == false ]]; then
+      echo "Error: unknown package '$target'" >&2
+      echo "Available packages:" >&2
+      for pkg in "${!deps[@]}"; do echo "  ${pkg##*/}" >&2; done
+      exit 1
+    fi
+
+    echo -e "\nRunning ncu -u for $target..."
+    ncu -u --packageFile "$PACKAGE_JSON" --filter "${target_pkgs[0]}"
+  else
+    echo -e "\nRunning ncu -u to upgrade package.json..."
+    ncu -u --packageFile "$PACKAGE_JSON"
+    target_pkgs=("${!deps[@]}")
+  fi
+
+  declare -A old_versions
+  for pkg in "${target_pkgs[@]}"; do
+    old_versions["$pkg"]=$(readme_version "${deps[$pkg]}")
   done
 
-  summary_lines=()
-  for i in "${!changed_pkgs[@]}"; do
-    summary_lines+=("$(printf " %-*s  %*s  ->  %s" \
-      "$max_pkg_len" "${changed_pkgs[$i]}" \
-      "$max_old_len" "${changed_old[$i]}" \
-      "${changed_new[$i]}")")
+  for pkg in "${target_pkgs[@]}"; do
+    readme_key="${deps[$pkg]}"
+    pkg_name="${pkg##*/}"
+    update_fn="update_${pkg_name//-/_}"
+    run_if_updated "$pkg" "$readme_key" "$update_fn"
   done
 
-  sep() { printf "%-${1}s\n" "" | tr " " "-"; }
+  # Build update summary
+  declare -a changed_pkgs=()
+  declare -a changed_old=()
+  declare -a changed_new=()
+  for pkg in "${target_pkgs[@]}"; do
+    old_ver="${old_versions[$pkg]}"
+    new_ver=$(extract_version "$pkg")
+    if [[ "$old_ver" != "$new_ver" ]]; then
+      changed_pkgs+=("$pkg")
+      changed_old+=("$old_ver")
+      changed_new+=("$new_ver")
+    fi
+  done
 
-  echo -e "\n-- Suggested git commit message --"
-  echo "chore(deps): update static assets"
-  echo ""
-  for line in "${summary_lines[@]}"; do echo "$line"; done
-fi
+  if [[ ${#changed_pkgs[@]} -gt 0 ]]; then
+    max_pkg_len=0
+    max_old_len=0
+    max_new_len=0
+    for i in "${!changed_pkgs[@]}"; do
+      [[ ${#changed_pkgs[$i]} -gt $max_pkg_len ]] && max_pkg_len=${#changed_pkgs[$i]}
+      [[ ${#changed_old[$i]} -gt $max_old_len ]] && max_old_len=${#changed_old[$i]}
+      [[ ${#changed_new[$i]} -gt $max_new_len ]] && max_new_len=${#changed_new[$i]}
+    done
+
+    summary_lines=()
+    for i in "${!changed_pkgs[@]}"; do
+      summary_lines+=("$(printf " %-*s  %*s → %*s" \
+        "$max_pkg_len" "${changed_pkgs[$i]}" \
+        "$max_old_len" "${changed_old[$i]}" \
+        "$max_new_len" "${changed_new[$i]}")")
+    done
+
+    sep() { printf "%-${1}s\n" "" | tr " " "-"; }
+
+    echo -e "\n-- Suggested git commit message --"
+    echo "chore(deps): update static assets"
+    echo ""
+    for line in "${summary_lines[@]}"; do echo "$line"; done
+  fi
+}
+
+main "$@"
