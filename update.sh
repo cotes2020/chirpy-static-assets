@@ -116,7 +116,6 @@ update_fontawesome_free() {
   local fa_extract_dir="$SCRIPT_DIR/fontawesome-free-${version}-web"
   local fa_dest="$SCRIPT_DIR/fontawesome-free"
   local files=(
-    "LICENSE.txt"
     "css/all.min.css"
     "webfonts"
   )
